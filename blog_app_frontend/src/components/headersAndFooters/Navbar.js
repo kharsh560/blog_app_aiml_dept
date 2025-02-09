@@ -4,8 +4,10 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import maitLogo from "../../assets/mait_logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../reduxStateManagementFiles/authSlice";
+import { useNotification } from "../utils/NotificationProvider";
 
 const Navbar = () => {
+  const { showNotification } = useNotification();
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.userData);
   const isAdmin = userData?.isAdmin;
@@ -17,8 +19,6 @@ const Navbar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   // console.log("path: ", location.pathname);
-  
-  
 
   // const [isLoggedIn, setIsLoggedIn] = React.useState(isLoggedInFromStore);
   // const [userData, setUserData] = React.useState(userDataFromStore);
@@ -92,7 +92,7 @@ const Navbar = () => {
   }, [isLoggedIn, userData]);
 
   return (
-    <nav className="bg-white shadow-xl w-full z-30  p-4 border border-gray-200 rounded-md">
+    <nav className="bg-white shadow-xl w-full z-30 p-4 border border-gray-200 rounded-md">
       {/* style={{ height: "75px" }} h-[75px] -> Isko hataya then only, wo bottom extra margin wala error resolve hua. */}
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
@@ -219,33 +219,85 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="#"
-              className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+            <Link
+              to="/"
+              onClick={() => setIsOpen(false)}
+              className={`block px-3 py-2 ${
+                currentPath === "/"
+                  ? "text-primary-600 font-bold"
+                  : "text-gray-700"
+              } hover:text-blue-600`}
             >
               Home
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+            </Link>
+            <Link
+              to="/all-posts"
+              onClick={() => setIsOpen(false)}
+              className={`block px-3 py-2 ${
+                currentPath === "/all-posts"
+                  ? "text-primary-600 font-bold"
+                  : "text-gray-700"
+              } hover:text-blue-600`}
             >
               All Posts
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+            </Link>
+
+            {isAdmin && (
+              <Link
+                to="/my-posts"
+                onClick={() => setIsOpen(false)}
+                className={`block px-3 py-2 ${
+                  currentPath === "/my-posts"
+                    ? "text-primary-600 font-bold"
+                    : "text-gray-700"
+                } hover:text-blue-600`}
+              >
+                My Posts
+              </Link>
+            )}
+
+            {isAdmin && (
+              <button
+                onClick={() => {
+                  showNotification("error", "You can only post on laptops");
+                  
+                  setIsOpen(false);
+                }}
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600"
+              >
+                Add Post
+              </button>
+            )}
+
+            <Link
+              to="/about"
+              onClick={() => setIsOpen(false)}
+              className={`block px-3 py-2 ${
+                currentPath === "/about"
+                  ? "text-primary-600 font-bold"
+                  : "text-gray-700"
+              } hover:text-blue-600`}
             >
-              My Posts
-            </a>
-            <a
-              href="#"
-              className="block px-3 py-2 text-gray-700 hover:text-blue-600"
+              About
+            </Link>
+
+            <button
+              onClick={(e) => {
+                authButtonHandler(e.target.textContent);
+                setIsOpen(false);
+              }}
+              className="w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600"
             >
-              Add Post
-            </a>
-            <button className="w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600">
-              Sign Out
+              {isLoggedIn ? "Sign Out" : "Sign In"}
             </button>
+
+            {isLoggedIn && (
+              <img
+                src={userData?.avatarUrl}
+                className="w-14 rounded-xl mx-3 my-2"
+                alt="User avatar"
+              />
+            )}
           </div>
         </div>
       )}

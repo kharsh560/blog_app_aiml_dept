@@ -19,7 +19,6 @@ import { useNotification } from "../utils/NotificationProvider";
 import Loader from "../GlobalLoader";
 import DeletionModal from "./DeletionWarning";
 
-
 // import { motion, AnimatePresence } from "framer-motion";
 
 const BlogDetail = () => {
@@ -137,8 +136,6 @@ const BlogDetail = () => {
     }
   }, []);
 
-
-
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev);
   };
@@ -174,12 +171,12 @@ const BlogDetail = () => {
   // NOTE: Many a times, tailwind does not react to react's states like this :-  className={isDeletionModalOpen ? "overflow-y-hidden" : ""}...
   // ...Hence, we need to apply the property using conventional CSS styling only!
   useEffect(() => {
-  if (isDeletionModalOpen || isModalOpen) {
-    document.body.classList.add("overflow-hidden");
-  } else {
-    document.body.classList.remove("overflow-hidden");
-  }
-}, [isDeletionModalOpen, isModalOpen]);
+    if (isDeletionModalOpen || isModalOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isDeletionModalOpen, isModalOpen]);
 
   return (
     <div>
@@ -194,7 +191,7 @@ const BlogDetail = () => {
       </div>
 
       <div
-        className={isLoading ? "hidden" : "flex justify-center w-full h-full"}
+        className={isLoading ? "hidden" : "flex justify-center items-center "}
       >
         <DeletionModal
           isOpen={isDeletionModalOpen}
@@ -248,10 +245,18 @@ const BlogDetail = () => {
                       {/* Edit Option */}
                       <li
                         className="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-100"
-                        onClick={() => handleEdit()}
+                        onClick={() => {
+                          if (window.innerWidth <= 768) {
+                            // alert("");
+                            showNotification("error", "You cannot edit on a mobile phone.");
+                            return;
+                          }
+                          handleEdit();
+                        }}
                       >
                         Edit
                       </li>
+
                       {/* Delete Option */}
                       <li
                         className="px-4 py-2 text-red-600 cursor-pointer hover:bg-red-100"
@@ -323,7 +328,7 @@ const BlogDetail = () => {
                 <div className="bg-gray-300 sm:p-3 rounded-lg h-0 flex-grow">
                   <div className="flex justify-between">
                     <div className="flex items-center">
-                      <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">
+                      <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4 m-2">
                         Summary
                       </h2>
                     </div>
@@ -333,7 +338,7 @@ const BlogDetail = () => {
                     </div>
                   </div>
                   <div className="h-[25vh] overflow-y-scroll">
-                    <p className="text-gray-600 text-sm sm:text-base">
+                    <p className="text-gray-600 text-sm sm:text-base m-2">
                       {post?.summary || "Not available!"}
                     </p>
                   </div>
@@ -498,8 +503,9 @@ const BlogDetail = () => {
             </div>
 
             {/* otherPostsByThisAuthor */}
-            <div className="lg:col-span-2 h-[60vh]">
-              <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">
+            <div className="lg:col-span-2 h-[60vh]  ">
+            {/* */}
+              <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 m-11 ml-0  lg:m-0 lg:mb-5">
                 {/* NOTE: sm: means in laptops and normal means in mobiles */}
                 More posts by {post?.author?.name}
               </h2>
@@ -514,7 +520,7 @@ const BlogDetail = () => {
                       />
                       <div className="p-4">
                         <h2 className="text-lg font-semibold mb-2">
-                          {post?.title}
+                          {indvPost?.title}
                         </h2>
                         <div className="flex items-center text-gray-600 text-xs mb-2">
                           <img
