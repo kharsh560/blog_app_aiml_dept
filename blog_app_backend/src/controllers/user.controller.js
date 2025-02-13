@@ -185,7 +185,7 @@ const signin = async (req, res) => {
   // Accessing the cookie:-
   const options = {
     httpOnly: true,
-    secure: true,
+    secure: false,
   };
 
   return res.status(200).cookie("accessToken", accessToken, options).json({
@@ -219,7 +219,7 @@ const signout = async (req, res) => {
 
   const options = {
     httpOnly: true,
-    secure: true,
+    secure: false,
   };
 
   return res.status(200).clearCookie("accessToken", options).json({
