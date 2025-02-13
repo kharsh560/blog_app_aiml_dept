@@ -19,7 +19,7 @@ connectDB()
 
   app.listen(port, () => {
     console.log(
-      `App/Server is listening on port: http://localhost:${port}`
+      `App/Server is listening on port: http://64.227.140.158:${port}`
     );
   });
 
