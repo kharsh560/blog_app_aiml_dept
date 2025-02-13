@@ -12,7 +12,7 @@ const app = express();
 //   })
 // );
 
-const whitelist = ["http://localhost:3000"];
+const whitelist = ["http://64.227.140.158:3000"];
 
 const corsOptions = {
   origin: function (origin, callback) {
