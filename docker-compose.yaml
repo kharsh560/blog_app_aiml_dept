@@ -1,0 +1,29 @@
+name: blog-app-aiml-dept
+
+services:
+  api:
+    build:
+      context: ./blog_app_backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: ./blog_app_backend/.env
+    volumes:
+      - ./blog_app_backend:/app
+      - /app/node_modules
+    ports:
+      - 4800:4800
+
+  frontend:
+    build:
+      context: ./blog_app_frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: ./blog_app_frontend/.env
+    volumes:
+      - ./blog_app_frontend:/app
+      - /app/node_modules
+    ports: 
+      - 3000:3000
+    depends_on:
+      - api
+

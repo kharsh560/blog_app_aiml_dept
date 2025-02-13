@@ -46,7 +46,7 @@ const EditPost = () => {
   const publishBlog = async (e) => {
     e.preventDefault();
     // setIsPublishing(true);
-    console.log("Dummy Updating blog");
+    // console.log("Dummy Updating blog");
     // setTimeout(() => {
     //   setIsPublishing(false);
     // }, 2000);
@@ -58,30 +58,30 @@ const EditPost = () => {
       if (
         (title === "" || title === null || title === undefined)
       ) {
-        console.log("You selected title, but its empty!");
+        // console.log("You selected title, but its empty!");
         showNotification("error", "You choose title but its empty!");
       } else {
-        console.log("Title appended!", title);
+        // console.log("Title appended!", title);
         formData.append("title", title);
       }
     } 
 
     if (checked.content) {
       if (content === "" || content === null || content === undefined) {
-        console.log("You selected content, but its empty!");
+        // console.log("You selected content, but its empty!");
         showNotification("error", "You choose content but its empty!");
       } else {
-        console.log("Content appended!", content);
+        // console.log("Content appended!", content);
         formData.append("content", content);
       }
     } 
 
     if (checked.description) {
       if (description === "" || description === null || description === undefined) {
-        console.log("You selected description, but its empty!");
+        // console.log("You selected description, but its empty!");
         showNotification("error", "You choose description but its empty!");
       } else {
-        console.log("Description appended!", description);
+        // console.log("Description appended!", description);
         formData.append("description", description);
       }
     } 
@@ -92,15 +92,15 @@ const EditPost = () => {
         image === null ||
         image === undefined
       ) {
-        console.log("You selected image, but its empty!");
+        // console.log("You selected image, but its empty!");
         showNotification("error", "You choose image but its empty!");
       } else {
-        console.log("Image appended!");
+        // console.log("Image appended!");
         formData.append("poster", image);
       }
     } 
 
-    console.log("formData entries: \n");
+    // console.log("formData entries: \n");
     for (const [key, value] of formData.entries()) {
       console.log(`${key}:`, value);
     }    
@@ -116,11 +116,11 @@ const EditPost = () => {
         }
       );
 
-      console.log("response: ", response);
+      // console.log("response: ", response);
 
       const result = await response.json();
 
-      console.log("result: ", result);
+      // console.log("result: ", result);
 
       if (!result) {
         console.log("Failed to create post.");

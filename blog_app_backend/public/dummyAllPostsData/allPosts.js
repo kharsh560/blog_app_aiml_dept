@@ -323,11 +323,11 @@ const allPosts = [
   },
 ];
 
-console.log("\n");
+// console.log("\n");
 var count = 0;
 
 for (const post of allPosts) {
   ++count;
-  console.log(`number ${count} -> ${post.title}`);
-  console.log("\n");
+  // console.log(`number ${count} -> ${post.title}`);
+  // console.log("\n");
 }

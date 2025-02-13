@@ -56,7 +56,7 @@ Ofcourse it will be stringified, but I can simply do  JSON.parse() on it to retu
     const result = await chat.sendMessage(userPrompt);
 
     const response = result.response.text();
-    console.log("\n Actual response: ", response, "\n");
+    // console.log("\n Actual response: ", response, "\n");
 
     // const slicedResponse = response.slice(7, -3);
     const slicedResponse = response
@@ -64,12 +64,12 @@ Ofcourse it will be stringified, but I can simply do  JSON.parse() on it to retu
       .replace(/^```|```$/g, "") // Removes surrounding backticks
       .replace(/^json\s*/, ""); // Remove "json" at the start of the response if it exists
 
-    console.log("\n Type of the slicedResponse: ", typeof slicedResponse), "\n";
-    console.log("\n slicedResponse: ", slicedResponse), "\n";
+    // console.log("\n Type of the slicedResponse: ", typeof slicedResponse), "\n";
+    // console.log("\n slicedResponse: ", slicedResponse), "\n";
 
     // Parse the stringified JSON
     const jsonResponse = JSON.parse(slicedResponse);
-    console.log("\n Json-fied response: ", jsonResponse, "\n");
+    // console.log("\n Json-fied response: ", jsonResponse, "\n");
 
     return jsonResponse; // Return the parsed JSON
 
@@ -94,10 +94,10 @@ const createPost = async (req, res) => {
       return res.status(401).json({ error: "Unauthorized request!" });
     }
 
-    console.log("author: ", author);
-    console.log("content: ", content);
-    console.log("description: ", description);
-    console.log("title: ", title);
+    // console.log("author: ", author);
+    // console.log("content: ", content);
+    // console.log("description: ", description);
+    // console.log("title: ", title);
 
     if (
       [title, description, content].some(
@@ -117,9 +117,9 @@ const createPost = async (req, res) => {
       content
     );
 
-    console.log("summary: ", summary);
-    console.log("minutesRead: ", minutesRead);
-    console.log("tags: ", tags);
+    // console.log("summary: ", summary);
+    // console.log("minutesRead: ", minutesRead);
+    // console.log("tags: ", tags);
 
     if (!summary || !minutesRead || !tags) {
       // return res.status(400).json({ error: "Missing responses from LLM" });
@@ -139,7 +139,7 @@ const createPost = async (req, res) => {
     // get the poster local path.
     // const posterUrlLocalPath = req.file?.path;
     const posterUrlLocalPath = req.file?.path;
-    console.log(posterUrlLocalPath);
+    // console.log(posterUrlLocalPath);
     // if (!posterUrlLocalPath) {
     //   return res.status(400).json({ error: "Missing poster image" });
     // }
@@ -191,7 +191,7 @@ const getPost = async (req, res) => {
   // const postId = req.params; -> Wrong!!
   const postId = req.params.postId;
   const userId = req.body?._id;
-  console.log("getPost userId: ", userId);
+  // console.log("getPost userId: ", userId);
 
   // or:- const { postId } = req.params;
 
@@ -674,9 +674,9 @@ const editPost = async (req, res) => {
     const { postId } = req.params; // Get the post ID from the request params
     const { title, description, content } = req.body;
 
-    console.log(title);
-    console.log(description);
-    console.log(content);
+    // console.log(title);
+    // console.log(description);
+    // console.log(content);
     
 
     // Step 1: Validate input

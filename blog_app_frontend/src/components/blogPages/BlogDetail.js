@@ -39,7 +39,7 @@ const BlogDetail = () => {
   }, [postDetail]);
 
   const post = postDetail?.queriedPost;
-  console.log(post);
+  // console.log(post);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
@@ -47,7 +47,7 @@ const BlogDetail = () => {
 
   const { isLoggedIn, userData } = useSelector((state) => state.auth);
   const isAdmin = userData?.isAdmin;
-  console.log("Is logged in: " + isLoggedIn);
+  // console.log("Is logged in: " + isLoggedIn);
 
   const [isPostLikedByThisUser, setIsPostLikedByThisUser] = useState(null);
   const [likes, setLikes] = useState(null);
@@ -79,12 +79,12 @@ const BlogDetail = () => {
       );
       const jsonResponse = await response.json();
       if (jsonResponse.message === "Post liked!") {
-        console.log("likeDislike Button message: ", jsonResponse.message);
+        // console.log("likeDislike Button message: ", jsonResponse.message);
         setLikes((prev) => prev + 1);
         setIsPostLikedByThisUser((prev) => !prev);
         showNotification("success", "Post liked!");
       } else {
-        console.log("likeDislike Button message: ", jsonResponse.message);
+        // console.log("likeDislike Button message: ", jsonResponse.message);
         setLikes((prev) => prev - 1);
         setIsPostLikedByThisUser((prev) => !prev);
         showNotification("success", "Post disliked!");
@@ -116,7 +116,7 @@ const BlogDetail = () => {
   // }
 
   const handleFocusCommentEditor = () => {
-    console.log("Focusing CommentEditor");
+    // console.log("Focusing CommentEditor");
     if (commentEditorRef.current) {
       commentEditorRef.current.focus(); // Focus the CommentEditor
     }
@@ -146,7 +146,7 @@ const BlogDetail = () => {
   // };
 
   const handleEdit = () => {
-    console.log("Edit clicked");
+    // console.log("Edit clicked");
     navigate(`/edit-post/${post?._id}`, {
       state: {
         postId: post?._id,
