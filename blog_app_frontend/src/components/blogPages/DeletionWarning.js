@@ -34,7 +34,7 @@ const DeletionModal = ({
     if (text === postName) {
       try{
         const response = await fetch(
-          "http://localhost:4800/api/v1/post/deletePost",
+          "http://64.227.140.158:4800/api/v1/post/deletePost",
           {
             method: "DELETE",
             headers: {
@@ -42,7 +42,7 @@ const DeletionModal = ({
             },
             credentials: "include", // Required for cookies in cross-origin requests
             body: JSON.stringify({
-              "postId" : postId
+              postId: postId,
             }),
           }
         );

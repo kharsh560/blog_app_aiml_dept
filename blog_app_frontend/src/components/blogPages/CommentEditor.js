@@ -28,7 +28,7 @@ const CommentEditor = forwardRef(
         settextAreaContent(null);
         formRef.current.reset();
         const response = await fetch(
-          `http://localhost:4800/api/v1/comment/getPostComments/${sentPostId}`,
+          `http://64.227.140.158:4800/api/v1/comment/getPostComments/${sentPostId}`,
           {
             credentials: "include",
           }

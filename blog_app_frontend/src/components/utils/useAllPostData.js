@@ -7,7 +7,9 @@ const useAllPostData = ()=>{
     const navigate = useNavigate()
     
     async function getAllPostData() {
-        const response = await fetch("http://localhost:4800/api/v1/post/getAllPosts");
+        const response = await fetch(
+          "http://64.227.140.158:4800/api/v1/post/getAllPosts"
+        );
         // console.log(response.json());
         const json = await response.json();
         setAllPostData(json?.data);

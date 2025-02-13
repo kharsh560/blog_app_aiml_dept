@@ -108,7 +108,7 @@ const EditPost = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:4800/api/v1/post/editPost/${postId}`,
+        `http://64.227.140.158:4800/api/v1/post/editPost/${postId}`,
         {
           method: "PATCH",
           credentials: "include",

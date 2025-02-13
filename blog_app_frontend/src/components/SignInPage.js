@@ -22,17 +22,20 @@ function SignInPage() {
     // console.log(password);
 
     try {
-      const response = await fetch("http://localhost:4800/api/v1/user/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", // Required for cookies in cross-origin requests
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        "http://64.227.140.158:4800/api/v1/user/signin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // Required for cookies in cross-origin requests
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
 
       if (!response.ok) {
         // response.json().then((jsonRes) => {

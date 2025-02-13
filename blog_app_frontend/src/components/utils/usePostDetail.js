@@ -11,7 +11,7 @@ const usePostDetail = (id) =>{
     const[postDetail,setpostDetail] = useState(null);
     async function getPostDetail(){
         const response = await fetch(
-          `http://localhost:4800/api/v1/post/getPost/${id}`,
+          `http://64.227.140.158:4800/api/v1/post/getPost/${id}`,
           {
             method: "POST",
             headers: {

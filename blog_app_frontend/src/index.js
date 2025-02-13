@@ -30,7 +30,7 @@ const Layout = () => {
         try {
           console.log("Checking for session!");
           const response = await fetch(
-            "http://localhost:4800/api/v1/user/checkSession",
+            "http://64.227.140.158:4800/api/v1/user/checkSession",
             {
               method: "GET",
               headers: {
