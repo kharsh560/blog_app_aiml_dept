@@ -3,7 +3,7 @@ import { Content } from "../models/content.model.js";
 import { Post } from "../models/post.model.js";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Appreciation } from "../models/appreciation.model.js";
-import { Comment } from "../models/comment.model.js"
+import { Comment } from "../models/comment.model.js";
 import uploadOntoCloudinary from "../utils/cloudinary.config.js";
 
 /*
@@ -12,7 +12,7 @@ Note that the "content" will be generated through TINY-MCE rich-text editor whic
   \n Now let's talk about the response you have to give me. \n
 */
 
-// \nNote that the "content" will be generated through TINY-MCE rich-text editor which produces the content in pure HTML. But it will be given to you after doing "JSON.stringify(tinyMceProducedContent)" So the "content" will be solething like this:- 
+// \nNote that the "content" will be generated through TINY-MCE rich-text editor which produces the content in pure HTML. But it will be given to you after doing "JSON.stringify(tinyMceProducedContent)" So the "content" will be solething like this:-
 //   \n "<p><span style=\"color: #e03e2d;\">Hello</span> <strong>there nsdjfnojdpo jfob onf obnfonfdff</strong></p>\n<p>&nbsp;</p>\n<div>\n<p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry." \n You can use html-react-parser to parse the content.
 //   \n Now let's talk about the response you have to give me. \n
 
@@ -580,7 +580,7 @@ const deletePost = async (req, res) => {
     }
 
     const postDeletion = await Post.findByIdAndDelete(postIdWhichIsToBeDeleted);
-    
+
     // Deleting the other post related docs: content, likes and comments, after confirming that the post has been deleted.
     // if (!postDeletion) {
     //   return res
@@ -599,12 +599,10 @@ const deletePost = async (req, res) => {
     // More improved version of this logic:-
 
     if (!postDeletion) {
-      return res
-        .status(404)
-        .json({
-          error:
-            "Post deletion unsuccessful. Post not found or is already deleted.",
-        });
+      return res.status(404).json({
+        error:
+          "Post deletion unsuccessful. Post not found or is already deleted.",
+      });
     }
 
     // Proceed with deleting related data
@@ -642,9 +640,8 @@ const deletePost = async (req, res) => {
 
     return res.status(200).json(response);
 
-    
     // const contentDeletion = await Content.findByIdAndDelete(requestedPostToBeDeletedInDB.content.toString());
-    
+
     // if (postDeletion && contentDeletion) {
     //   return res.status(200).json({ message: "Post and Content deleted successfully." });
     // }
@@ -677,13 +674,13 @@ const editPost = async (req, res) => {
     // console.log(title);
     // console.log(description);
     // console.log(content);
-    
 
     // Step 1: Validate input
     if (
       [title, description, content].every(
         (field) => field?.trim() === "" || field === null || field === undefined
-      )
+      ) &&
+      !req.file?.path
     ) {
       return res.status(400).json({
         error: "At least one field must be provided to update the post!",
@@ -760,6 +757,5 @@ const editPost = async (req, res) => {
     });
   }
 };
-
 
 export { createPost, getPost, getUserPosts, getAllPosts, deletePost, editPost };
