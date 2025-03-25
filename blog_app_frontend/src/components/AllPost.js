@@ -19,11 +19,11 @@ const AllPost = () => {
   }, [allPostData]);
 
   return (
-    <div>
+    <div className=" overflow-x-hidden ">
       <div
         className={
           isLoading
-            ? "h-[80vh] w-screen flex justify-center items-center"
+            ? "h-screen w-screen flex justify-center items-center"
             : "hidden"
         }
       >

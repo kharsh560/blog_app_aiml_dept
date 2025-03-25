@@ -9,17 +9,17 @@ const facultyData = [
   {
     name: "Dr. Tripti Lamba",
     title: "Associate Professor -AI & ML Department  ",
-    image: "https://cse.mait.ac.in/images/Tripti_Lamba.jpg", // Replace with faculty image URL
+    image: "https://cse.mait.ac.in/images/Tripti_Lamba.jpg", 
   },
-  {
-    name: "Dr. Gunjan Chugh",
-    title: "Assistant Professor- AI &ML Department  ",
-    image: "https://cse.mait.ac.in/images/Gunjan_Chugh.jpg", // Replace with faculty image URL
-  },
+  // {
+  //   name: "Dr. Gunjan Chugh",
+  //   title: "Assistant Professor- AI &ML Department  ",
+  //   image: "https://cse.mait.ac.in/images/Gunjan_Chugh.jpg", 
+  // },
   {
     name: "Dr. Neelam Sharma",
     title: "Assistant Professor- AI &ML Department ",
-    image: "https://cse.mait.ac.in/images/Neelam-Sharma.jpg", // Replace with faculty image URL
+    image: "https://cse.mait.ac.in/images/Neelam-Sharma.jpg", 
   },
 ];
 
@@ -30,7 +30,7 @@ const FacultySection = () => {
         <h2 className="text-3xl font-bold text-center mb-12">
           Core Faculties (AI&ML Dept.)
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {facultyData.map((faculty, index) => (
             <div key={index} className="flex flex-col items-center">
               <img

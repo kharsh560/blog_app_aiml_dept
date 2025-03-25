@@ -203,7 +203,8 @@ const BlogDetail = () => {
           postId={post?._id}
         />
         <div
-          className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 `}
+          // className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 `}
+          className=" pt-4 pb-20"
         >
           {/* Header */}
           <div className="flex justify-between items-center mb-4 sm:mb-6 lg:mb-8">
@@ -248,7 +249,10 @@ const BlogDetail = () => {
                         onClick={() => {
                           if (window.innerWidth <= 768) {
                             // alert("");
-                            showNotification("error", "You cannot edit on a mobile phone.");
+                            showNotification(
+                              "error",
+                              "You cannot edit on a mobile phone."
+                            );
                             return;
                           }
                           handleEdit();
@@ -309,10 +313,10 @@ const BlogDetail = () => {
           </div>
 
           {/* Main content: poster, summary+contentButton, comments and otherPostsSection */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-2 lg:gap-4 ">
+          <div className="lg:grid lg:grid-cols-5 gap-4 sm:gap-2 lg:gap-4">
             {/* Cover Image and Interactions */}
-            <div className="lg:col-span-3 space-y-4 h-[65vh]">
-              <div className="relative w-full h-full">
+            <div className="col-span-3 space-y-4 mb-2 lg:min-h-[400px]">
+              <div className=" w-full h-full">
                 <img
                   src={post?.posterUrl}
                   alt={post?.title}
@@ -321,12 +325,12 @@ const BlogDetail = () => {
               </div>
             </div>
             {/* summary / content / likes / tags */}
-            <div className="lg:col-span-2 flex flex-col pb-1 h-[65vh]">
+            <div className="lg:col-span-2 sm:col-span-1  flex flex-col pb-1 min-h-[400px]">
               {/* Summary Section (60%) */}
-              <div className="flex-grow-[7] flex flex-col">
+              <div className=" flex flex-col">
                 {/* Scrollable Summary Content */}
-                <div className="bg-gray-300 sm:p-3 rounded-lg h-0 flex-grow">
-                  <div className="flex justify-between">
+                <div className="bg-gray-300 sm:p-3 rounded-lg">
+                  <div className="flex justify-between p-1">
                     <div className="flex items-center">
                       <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4 m-2">
                         Summary
@@ -337,7 +341,7 @@ const BlogDetail = () => {
                       <h2 className="text-xs relative top-1">AI generated</h2>
                     </div>
                   </div>
-                  <div className="h-[25vh] overflow-y-scroll">
+                  <div className="min-h-[20vh] overflow-y-scroll">
                     <p className="text-gray-600 text-sm sm:text-base m-2">
                       {post?.summary || "Not available!"}
                     </p>
@@ -390,9 +394,9 @@ const BlogDetail = () => {
               </div>
 
               {/* Tags Section (40%) */}
-              <div className="flex-grow-[3] flex flex-col">
+              <div className="flex justify-between  h-full flex-col">
                 {/* Scrollable Tags Content */}
-                <div className="bg-gray-300 p-3 rounded-lg h-0 flex-grow ">
+                <div className="bg-gray-300 p-3 rounded-lg">
                   <div className="flex justify-between">
                     <div className="flex items-center">
                       <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">
@@ -404,7 +408,7 @@ const BlogDetail = () => {
                       <h2 className="text-xs relative top-1">AI generated</h2>
                     </div>
                   </div>
-                  <div className="overflow-y-auto h-[8vh]">
+                  <div className="overflow-y-scroll  min-h-[8vh] ">
                     <div className="flex flex-wrap gap-2">
                       {post?.tags?.length > 0 ? (
                         post?.tags?.map((tag) => (
@@ -424,7 +428,7 @@ const BlogDetail = () => {
                   </div>
                 </div>
                 {/* Read More Button */}
-                <div className="w-full mt-2">
+                <div className="w-full relative bottom-1">
                   <button
                     type="button"
                     className="w-full text-white bg-[#1D4ED8] hover:bg-[#050708]/90 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-sm px-4 sm:px-5 py-2 sm:py-2.5 text-center inline-flex items-center justify-center"
@@ -443,7 +447,7 @@ const BlogDetail = () => {
             </div>
 
             {/* Comments Section */}
-            <div className="lg:col-span-3 h-[60vh]">
+            <div className="lg:col-span-3 h-[60vh] lg:border-t-2">
               <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">
                 Comments
               </h2>
@@ -459,7 +463,7 @@ const BlogDetail = () => {
               {console.log("commentResponse")}
 
               {postComments?.length > 0 ? (
-                <div className="space-y-3 sm:space-y-4 mt-3 bg-slate-200 p-3 h-[36vh] overflow-y-scroll rounded-xl">
+                <div className="space-y-3 sm:space-y-4 mt-3 bg-slate-200 p-3 h-[36.7vh] overflow-y-scroll rounded-xl">
                   {postComments?.map((comment) => (
                     <div
                       key={comment._id}
@@ -503,13 +507,13 @@ const BlogDetail = () => {
             </div>
 
             {/* otherPostsByThisAuthor */}
-            <div className="lg:col-span-2 h-[60vh]  ">
-            {/* */}
-              <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 m-11 ml-0  lg:m-0 lg:mb-5">
+            <div className="lg:col-span-2  h-[60vh] lg:border-t-2  ">
+              {/* */}
+              <h2 className="text-xl sm:text-2xl font-semibold mb-4 m-11 ml-0  lg:m-0 lg:mb-5">
                 {/* NOTE: sm: means in laptops and normal means in mobiles */}
                 More posts by {post?.author?.name}
               </h2>
-              <div className="h-[59vh] overflow-y-scroll overflow-x-hidden p-4 bg-slate-200 rounded-xl">
+              <div className="h-full overflow-y-scroll overflow-x-hidden p-4 bg-slate-200 rounded-xl">
                 {post?.otherPostsByThisPostAuthor?.map((indvPost) => {
                   return (
                     <div className="bg-white my-2 rounded-lg shadow-md overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition-all duration-150 cursor-default ">

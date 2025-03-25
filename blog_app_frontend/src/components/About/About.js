@@ -6,7 +6,7 @@ import AboutHeader from "./AboutHeader"
 import Footer from "./Footer"
 const About = ()=>{
   return (
-    <div>
+    <div className=" overflow-x-hidden">
       <AboutHeader/>
       <MissionVision />
       <CollegeInfo />

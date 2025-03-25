@@ -38,20 +38,25 @@ const Home = () => {
   // Ok, means as useEffect used stale value of "slides" (0), so, after 1 second time interval, when the division process ran,
   // it set the "currentSlides" to "NaN" and hence slides[undefined] resulted to null.
 
+  const [toFro, setToFro] = useState(1);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % 3);
     }, 3000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [toFro]);
 
   const nextSlide = () => {
+    setToFro((prev) => prev+1);
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
+    setToFro((prev) => prev-1);
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
   };
 
   return (
@@ -87,18 +92,22 @@ const Home = () => {
                 <span className="inline-block px-4 py-1 mb-4 text-sm font-semibold text-blue-100 bg-blue-600/80 rounded-full">
                   Featured
                 </span>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
-                  {slides[currentSlide]?.title}
-                </h1>
-                <p className="text-xl text-blue-100 mb-4">
-                  {slides[currentSlide]?.description}
-                </p>
-                <p className="text-lg text-gray-200 mb-8 line-clamp-3 sm:line-clamp-none">
-                  {slides[currentSlide]?.summary}
-                </p>
+                <div
+                  className="overflow-y-scroll h-[350px] md:h-[450px] custom-scrollbar"
+                >
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+                    {slides[currentSlide]?.title}
+                  </h1>
+                  <p className="text-xl text-blue-100 mb-4">
+                    {slides[currentSlide]?.description}
+                  </p>
+                  <p className="text-lg text-gray-200 mb-8 line-clamp-3 sm:line-clamp-none">
+                    {slides[currentSlide]?.summary}
+                  </p>
+                </div>
                 <button
                   onClick={() => handleCardClick(slides[currentSlide]?._id)}
-                  className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                  className="px-6 py-3 mt-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
                 >
                   Read More
                 </button>
