@@ -14,7 +14,7 @@ const DeletionModal = ({
   postName,
   likesCount,
   commentLength,
-  postId
+  postId,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [text, setText] = useState("");
@@ -32,9 +32,9 @@ const DeletionModal = ({
 
   const matchTypedString = async (text) => {
     if (text === postName) {
-      try{
+      try {
         const response = await fetch(
-          `${process.env.BASE_URL}/api/v1/post/deletePost`,
+          `${process.env.REACT_APP_BASE_URL}/api/v1/post/deletePost`,
           {
             method: "DELETE",
             headers: {
@@ -46,28 +46,24 @@ const DeletionModal = ({
             }),
           }
         );
-        if(response.ok){
+        if (response.ok) {
           showNotification("success", "Post Successfully Deleted");
-          navigate("/my-posts")
+          navigate("/my-posts");
           document.body.classList.remove("overflow-hidden");
-        } 
-      }
-      catch(error){
+        }
+      } catch (error) {
         showNotification("failed", "failed to delete Post , Please Retry");
         setText("");
       }
-
-
     } else {
       // alert("Typed string didn't matched");
       showNotification("failed", "Typed string didn't matched");
     }
   };
 
-
   useEffect(() => {
     if (!isOpen) {
-      setText(""); 
+      setText("");
     }
   }, [isOpen]);
 
@@ -93,7 +89,7 @@ const DeletionModal = ({
           transform: "translate(-50%, -50%)", // Center the modal
           transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)", // Smooth easing
         }}
-        onClick={(e) => e.stopPropagation()} 
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
         <div className="flex justify-between items-center p-4 border-b border-gray-300">
@@ -134,7 +130,7 @@ const DeletionModal = ({
             className="border p-2 rounded w-4/6 mb-5 mt-2"
             onPaste={(event) => {
               event.preventDefault();
-              showNotification("Error","Pasting is not allowed!");
+              showNotification("Error", "Pasting is not allowed!");
             }}
           />
           {/* <p>You typed: {text}</p> */}

@@ -28,7 +28,7 @@ const CommentEditor = forwardRef(
         settextAreaContent(null);
         formRef.current.reset();
         const response = await fetch(
-          `${process.env.BASE_URL}/api/v1/comment/getPostComments/${sentPostId}`,
+          `${process.env.REACT_APP_BASE_URL}/api/v1/comment/getPostComments/${sentPostId}`,
           {
             credentials: "include",
           }
@@ -54,8 +54,7 @@ const CommentEditor = forwardRef(
       <section className="border border-1 border-black  dark:bg-gray-900 rounded-lg shadow-lg antialiased">
         {/* py-8 lg:py-16  */}
         <div className="max-w-3xl mx-auto px-4">
-          <div className="flex justify-between items-center mb-2">
-          </div>
+          <div className="flex justify-between items-center mb-2"></div>
           <Tooltip message="Login First" show={!isLoggedIn}>
             <form ref={formRef} className="mb-2">
               <div className="py-2 px-4 mb-2 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">

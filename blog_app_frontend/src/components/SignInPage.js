@@ -22,7 +22,7 @@ function SignInPage() {
     // console.log(password);
 
     try {
-      const response = await fetch(`${process.env.BASE_URL}/api/v1/user/signin`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/api/v1/user/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

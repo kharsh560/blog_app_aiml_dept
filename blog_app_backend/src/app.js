@@ -12,7 +12,7 @@ const app = express();
 //   })
 // );
 
-const whitelist = ["http://localhost:3000"];
+const whitelist = ["https://mait-aiml-official-blogspace.netlify.app/"];
 
 const corsOptions = {
   origin: function (origin, callback) {

@@ -50,50 +50,50 @@ function SignUpPage() {
     // Create FormData instance
     const formData = new FormData();
     // These names in the quotes are the same, which is present in backend's "const { name, enrollment, email, password } = req.body;"
-    formData.append("enrollment", enrolment); 
+    formData.append("enrollment", enrolment);
     formData.append("email", email);
     formData.append("name", name);
     formData.append("password", password);
     formData.append("avatar", image); // I guess its the same name as the one in the backend in userRoutes "avatar"
 
     try {
-        const response = await fetch(
-          `${process.env.BASE_URL}/api/v1/user/register`,
-          {
-            method: "POST",
-            body: formData,
-          }
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/api/v1/user/register`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response) {
+        console.log("Failed to sign up");
+        return;
+      }
+
+      console.log("response: ", response);
+
+      const jsonResponse = await response.json();
+
+      console.log("jsonResponse: ", jsonResponse);
+
+      if (!jsonResponse) {
+        console.log("Failed to convert response to JSON");
+      }
+
+      if (response.ok) {
+        alert("Sign up successful!");
+        setEnrolment("");
+        setEmail("");
+        setName("");
+        setPassword("");
+        setConfirmPassword("");
+        setImage(null);
+        showNotification(
+          "success",
+          "You signed up successfully! Please login now!"
         );
-
-        if (!response) {
-            console.log("Failed to sign up");
-            return;
-        }
-
-        console.log("response: ", response);
-
-        const jsonResponse = await response.json();
-
-        console.log("jsonResponse: ", jsonResponse);
-
-        if(!jsonResponse) {
-            console.log("Failed to convert response to JSON");
-        }
-
-        if (response.ok) {
-            alert("Sign up successful!");
-            setEnrolment("");
-            setEmail("");
-            setName("");
-            setPassword("");
-            setConfirmPassword("");
-            setImage(null);
-            showNotification(
-              "success",
-              "You signed up successfully! Please login now!"
-            );
-            navigate("/signin");
-        }
+        navigate("/signin");
+      }
     } catch (error) {
       showNotification("error", "Something went wrong! Please try again!");
       console.error("Error during sign up:", error);

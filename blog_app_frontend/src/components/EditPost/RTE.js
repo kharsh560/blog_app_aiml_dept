@@ -1,4 +1,4 @@
-import {Editor} from "@tinymce/tinymce-react";
+import { Editor } from "@tinymce/tinymce-react";
 
 export default function RTE({ setContent, content }) {
   {
@@ -18,7 +18,7 @@ export default function RTE({ setContent, content }) {
 
   return (
     <Editor
-      apiKey={process.env.TINY_MCE_API_KEY}
+      apiKey={process.env.REACT_APP_TINY_MCE_API_KEY}
       // initialValue={defaultValue}
       init={{
         //   initialValue: defaultValue,

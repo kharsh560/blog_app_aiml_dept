@@ -30,7 +30,7 @@ const Layout = () => {
         try {
           console.log("Checking for session!");
           const response = await fetch(
-            `${process.env.BASE_URL}/api/v1/user/checkSession`,
+            `${process.env.REACT_APP_BASE_URL}/api/v1/user/checkSession`,
             {
               method: "GET",
               headers: {
@@ -54,12 +54,11 @@ const Layout = () => {
 
   return (
     <div className="min-h-screen flex flex-col p-4 bg-gray-100">
-      
-        <Navbar />
-        <main className="flex-grow mt-3">
-          <Outlet />
-        </main>
-        <Footer />
+      <Navbar />
+      <main className="flex-grow mt-3">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 };

@@ -42,7 +42,7 @@ const Navbar = () => {
   const signOut = async () => {
     try {
       const response = await fetch(
-        `${process.env.BASE_URL}/api/v1/user/signout`,
+        `${process.env.REACT_APP_BASE_URL}/api/v1/user/signout`,
         {
           method: "POST", // Assuming the sign-out is a POST request
           headers: {
@@ -260,7 +260,7 @@ const Navbar = () => {
               <button
                 onClick={() => {
                   showNotification("error", "You can only post on laptops");
-                  
+
                   setIsOpen(false);
                 }}
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600"

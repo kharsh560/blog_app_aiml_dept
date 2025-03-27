@@ -65,7 +65,7 @@ const BlogDetail = () => {
   const handleLikeButtonClick = async (postId) => {
     async function likeDislikeApi() {
       const response = await fetch(
-        `${process.env.BASE_URL}/api/v1/appreciation/likeDislike`,
+        `${process.env.REACT_APP_BASE_URL}/api/v1/appreciation/likeDislike`,
         {
           method: "POST",
           headers: {

@@ -57,7 +57,7 @@ const AddPost = () => {
 
     try {
       const response = await fetch(
-        `${process.env.BASE_URL}/api/v1/post/createPost`,
+        `${process.env.REACT_APP_BASE_URL}/api/v1/post/createPost`,
         {
           method: "POST",
           credentials: "include",
@@ -86,56 +86,53 @@ const AddPost = () => {
         navigate(`/all-posts/${result.post?._id}`);
       }
     } catch (error) {
-        showNotification("error", "Failed to publish blog!");
-        setIsPublishing(false);
-        console.log("Failed to create post:", error);
+      showNotification("error", "Failed to publish blog!");
+      setIsPublishing(false);
+      console.log("Failed to create post:", error);
     }
-  }
+  };
 
   if (isPublishing) {
     return (
       <div className="h-[80vh] w-screen flex justify-center items-center">
         <PublisingLoader />
       </div>
-    ); 
-  } 
-  else {
-
-      return (
-        <div>
-          <div
-            className={
-              isLoading
-                ? "h-[80vh] w-screen flex justify-center items-center"
-                : "hidden"
-            }
-          >
-            <Loader />
+    );
+  } else {
+    return (
+      <div>
+        <div
+          className={
+            isLoading
+              ? "h-[80vh] w-screen flex justify-center items-center"
+              : "hidden"
+          }
+        >
+          <Loader />
+        </div>
+        <div
+          className={
+            isLoading ? "hidden" : "flex justify-center w-full h-[80vh]"
+          }
+        >
+          <div className="mx-2">
+            <RTE setContent={setContent} />
           </div>
-          <div
-            className={
-              isLoading ? "hidden" : "flex justify-center w-full h-[80vh]"
-            }
-          >
-            <div className="mx-2">
-              <RTE setContent={setContent} />
-            </div>
-            <div className="mx-2">
-              <DescriptionTitleImageForms
-                setDescription={setDescription}
-                setImage={setImage}
-                setTitle={setTitle}
-                publishBlog={publishBlog}
-              />
-            </div>
+          <div className="mx-2">
+            <DescriptionTitleImageForms
+              setDescription={setDescription}
+              setImage={setImage}
+              setTitle={setTitle}
+              publishBlog={publishBlog}
+            />
           </div>
         </div>
-      );
+      </div>
+    );
   }
 };
 
 export default AddPost;
-
 
 /*
 showEntireThings={() =>
