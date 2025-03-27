@@ -108,7 +108,7 @@ const EditPost = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:4800/api/v1/post/editPost/${postId}`,
+        `${process.env.BASE_URL}/api/v1/post/editPost/${postId}`,
         {
           method: "PATCH",
           credentials: "include",

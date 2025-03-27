@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const AddComment = async (requestData) => {
-  const apiUrl = "http://localhost:4800/api/v1/comment/addComment";
+  const apiUrl = `${process.env.BASE_URL}/api/v1/comment/addComment`;
 
   const res = await fetch(apiUrl, {
     method: "POST",

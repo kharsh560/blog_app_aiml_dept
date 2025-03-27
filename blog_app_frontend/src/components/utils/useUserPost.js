@@ -5,10 +5,13 @@ const useUserPost = ()=>{
     const [userPosts,setuserPosts] = useState(null);
     
     async function getPostsData() {
-        const response = await fetch("http://localhost:4800/api/v1/post/getUserPosts", {
+        const response = await fetch(
+          `${process.env.BASE_URL}/api/v1/post/getUserPosts`,
+          {
             method: "GET",
             credentials: "include", // Sends cookies with the request
-        });
+          }
+        );
         
 
         const json = await response.json();

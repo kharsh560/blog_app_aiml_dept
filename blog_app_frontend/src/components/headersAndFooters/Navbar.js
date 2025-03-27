@@ -42,7 +42,7 @@ const Navbar = () => {
   const signOut = async () => {
     try {
       const response = await fetch(
-        "http://localhost:4800/api/v1/user/signout",
+        `${process.env.BASE_URL}/api/v1/user/signout`,
         {
           method: "POST", // Assuming the sign-out is a POST request
           headers: {

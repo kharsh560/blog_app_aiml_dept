@@ -19,7 +19,7 @@ export default function RTE({setContent}) {
 
     return (
       <Editor
-        apiKey="8nm03ok1hrybuha04rprdszsnk7mkhghzm8pyziucah8ih0x"
+        apiKey={process.env.TINY_MCE_API_KEY}
         // initialValue={defaultValue}
         init={{
           //   initialValue: defaultValue,
@@ -53,7 +53,6 @@ export default function RTE({setContent}) {
           content_style:
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
         }}
-        
         onEditorChange={(e) => setContent(e)}
       />
     );

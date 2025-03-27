@@ -57,12 +57,13 @@ function SignUpPage() {
     formData.append("avatar", image); // I guess its the same name as the one in the backend in userRoutes "avatar"
 
     try {
-        const response = await fetch("http://localhost:4800/api/v1/user/register",
-            {
-                method: "POST",
-                body: formData,
-            }
-        )
+        const response = await fetch(
+          `${process.env.BASE_URL}/api/v1/user/register`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
 
         if (!response) {
             console.log("Failed to sign up");

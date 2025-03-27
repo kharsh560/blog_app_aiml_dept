@@ -30,7 +30,7 @@ const Layout = () => {
         try {
           console.log("Checking for session!");
           const response = await fetch(
-            "http://localhost:4800/api/v1/user/checkSession",
+            `${process.env.BASE_URL}/api/v1/user/checkSession`,
             {
               method: "GET",
               headers: {

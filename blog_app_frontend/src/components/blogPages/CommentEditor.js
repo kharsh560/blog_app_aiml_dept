@@ -28,7 +28,7 @@ const CommentEditor = forwardRef(
         settextAreaContent(null);
         formRef.current.reset();
         const response = await fetch(
-          `http://localhost:4800/api/v1/comment/getPostComments/${sentPostId}`,
+          `${process.env.BASE_URL}/api/v1/comment/getPostComments/${sentPostId}`,
           {
             credentials: "include",
           }

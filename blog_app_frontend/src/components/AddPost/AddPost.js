@@ -57,7 +57,7 @@ const AddPost = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:4800/api/v1/post/createPost",
+        `${process.env.BASE_URL}/api/v1/post/createPost`,
         {
           method: "POST",
           credentials: "include",
