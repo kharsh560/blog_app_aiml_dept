@@ -12,7 +12,7 @@ const app = express();
 //   })
 // );
 
-const whitelist = ["https://mait-aiml-official-blogspace.netlify.app/"];
+const whitelist = ["https://mait-aiml-official-blogspace.netlify.app"];
 
 const corsOptions = {
   origin: function (origin, callback) {
