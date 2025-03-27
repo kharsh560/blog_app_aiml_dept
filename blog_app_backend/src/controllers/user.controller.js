@@ -189,6 +189,7 @@ const signin = async (req, res) => {
   };
 
   return res.status(200).cookie("accessToken", accessToken, options).json({
+    // The "accessToken" inside the cookie fxn is the name with which token will be saved in the browser.
     user: loggedInUser,
     //   accessToken: accessToken,
     //   refreshToken: refreshToken,
