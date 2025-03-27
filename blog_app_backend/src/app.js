@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 // CORS setup
+// 1)
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
@@ -12,6 +13,7 @@ app.use(
   })
 );
 
+// 2)
 // const whitelist = ["https://mait-aiml-official-blogspace.netlify.app"];
 
 // const corsOptions = {
@@ -29,6 +31,15 @@ app.use(
 
 // // Middlewares -->
 // app.use(cors(corsOptions));
+
+// 3)
+const corsOptions = {
+  origin: "https://mait-aiml-official-blogspace.netlify.app",
+  methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 
 // For data from URL forms/body, when we accept data, we do some restrictions!
 app.use(express.json({ limit: "16kb" }));
