@@ -6,12 +6,12 @@ const app = express();
 
 // CORS setup
 // 1)
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: process.env.CORS_ORIGIN,
+//     credentials: true,
+//   })
+// );
 
 // 2)
 // const whitelist = ["https://mait-aiml-official-blogspace.netlify.app"];
