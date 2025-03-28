@@ -33,13 +33,19 @@ const app = express();
 // app.use(cors(corsOptions));
 
 // 3)
-const corsOptions = {
-  origin: "https://mait-aiml-official-blogspace.netlify.app",
-  methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: "https://mait-aiml-official-blogspace.netlify.app",
+//   methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+//   credentials: true,
+//   allowedHeaders: ["Content-Type", "Authorization"],
+// };
+// app.use(cors(corsOptions));
+// 4)
+app.use(
+  cors({
+    origin: "https://mait-aiml-official-blogspace.netlify.app",
+  })
+);
 
 // For data from URL forms/body, when we accept data, we do some restrictions!
 app.use(express.json({ limit: "16kb" }));
