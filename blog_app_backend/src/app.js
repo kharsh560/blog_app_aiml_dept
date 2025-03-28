@@ -41,11 +41,12 @@ const app = express();
 // };
 // app.use(cors(corsOptions));
 // 4)
-app.use(
-  cors({
-    origin: "https://mait-aiml-official-blogspace.netlify.app",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://mait-aiml-official-blogspace.netlify.app",
+//   })
+// );
+// NOTE: Removed CORS from express app since nginx is already handling it!
 
 // For data from URL forms/body, when we accept data, we do some restrictions!
 app.use(express.json({ limit: "16kb" }));
