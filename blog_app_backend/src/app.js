@@ -61,6 +61,7 @@ app.use(express.static("public"));
 // To access the user's browser cookies and set them too.
 app.use(cookieParser());
 // 19:18 L9) Uptil the above line.
+app.options("*", cors(corsOptions));
 
 // Routing codes:-
 // import { router as userRoutes } from "./routes/user.routes.js";
