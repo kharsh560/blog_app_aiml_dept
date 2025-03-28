@@ -673,6 +673,7 @@ const editPost = async (req, res) => {
   try {
     const { postId } = req.params; // Get the post ID from the request params
     const { title, description, content } = req.body;
+    const posterUrlLocalPath = req.file?.path;
 
     console.log(title);
     console.log(description);
@@ -681,11 +682,11 @@ const editPost = async (req, res) => {
 
     // Step 1: Validate input
     if (
-      [title, description, content].every(
+      [title, description, content, posterUrlLocalPath].every(
         (field) => field?.trim() === "" || field === null || field === undefined
       )
     ) {
-      return res.status(400).json({
+      return res.status(422).json({
         error: "At least one field must be provided to update the post!",
       });
     }
@@ -715,7 +716,7 @@ const editPost = async (req, res) => {
     }
 
     // Step 4: Handle poster update if a new file is provided
-    const posterUrlLocalPath = req.file?.path;
+    // const posterUrlLocalPath = req.file?.path;
     let posterUrl = post.posterUrl;
 
     if (posterUrlLocalPath) {

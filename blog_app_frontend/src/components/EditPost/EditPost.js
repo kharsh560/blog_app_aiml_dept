@@ -59,6 +59,7 @@ const EditPost = () => {
       if (title === "" || title === null || title === undefined) {
         // console.log("You selected title, but its empty!");
         showNotification("error", "You choose title but its empty!");
+        return;
       } else {
         // console.log("Title appended!", title);
         formData.append("title", title);
@@ -69,6 +70,7 @@ const EditPost = () => {
       if (content === "" || content === null || content === undefined) {
         // console.log("You selected content, but its empty!");
         showNotification("error", "You choose content but its empty!");
+        return;
       } else {
         // console.log("Content appended!", content);
         formData.append("content", content);
@@ -83,6 +85,7 @@ const EditPost = () => {
       ) {
         // console.log("You selected description, but its empty!");
         showNotification("error", "You choose description but its empty!");
+        return;
       } else {
         // console.log("Description appended!", description);
         formData.append("description", description);
@@ -93,6 +96,7 @@ const EditPost = () => {
       if (image === "" || image === null || image === undefined) {
         // console.log("You selected image, but its empty!");
         showNotification("error", "You choose image but its empty!");
+        return;
       } else {
         // console.log("Image appended!");
         formData.append("poster", image);
@@ -118,7 +122,7 @@ const EditPost = () => {
       // console.log("response: ", response);
 
       if (!response.ok) {
-        throw new Error("Something went wrong, please try again!")
+        throw new Error("Something went wrong, please try again!");
       }
 
       const result = await response.json();
@@ -127,7 +131,8 @@ const EditPost = () => {
 
       if (!result) {
         // console.log("Failed to create post.");
-        return;
+        // return;
+        throw new Error("Failed to convert response to json.");
       }
 
       if (result.message === "Post updated successfully") {
@@ -140,7 +145,7 @@ const EditPost = () => {
         navigate(`/all-posts/${postId}`);
       }
     } catch (error) {
-      showNotification("error", `Failed to publish blog! ${error}`);
+      showNotification("error", `${error}`);
       setIsPublishing(false);
       // console.log("Failed to create post:", error);
     }

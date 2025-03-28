@@ -1,6 +1,7 @@
 import React from "react";
 import { Code, Palette } from "lucide-react";
-import profile from "../../assets/SatyaPrakash_ProfilePic.jpeg";
+import satyaProfilePic from "../../assets/SatyaPrakash_ProfilePic.jpeg";
+import khProfilePic from "../../assets/KH_dp.PNG"
 
 const teamData = [
   {
@@ -8,7 +9,7 @@ const teamData = [
     role: "Frontend Developer",
     description:
       "Creative lead behind the blog's visual design and user experience",
-    image: profile,
+    image: satyaProfilePic,
     icon: Palette,
   },
   {
@@ -16,8 +17,7 @@ const teamData = [
     role: "Backend Developer",
     description:
       "Strategist & Analyst behind blog's architecture and functionality",
-    image:
-      "https://media.licdn.com/dms/image/v2/D5603AQEGrc1YYqI_yg/profile-displayphoto-shrink_400_400/B56ZRoNAq2HwAk-/0/1736915029517?e=1743033600&v=beta&t=_s6yXUtjRq0LjQ8AiepJBxnLYM3MT3ydE63SUTUy2BU",
+    image: khProfilePic,
     icon: Code,
   },
 ];
