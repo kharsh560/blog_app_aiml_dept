@@ -2,6 +2,19 @@ import jwt from "jsonwebtoken"
 import { User } from "../models/user.model.js"
 
 const verifyJWTandPopulateUserDataInReq = async (req, res, next) => {
+      res.header(
+        "Access-Control-Allow-Origin",
+        "https://mait-aiml-official-blogspace.netlify.app"
+      );
+      res.header(
+        "Access-Control-Allow-Methods",
+        "GET, POST, OPTIONS, PUT, DELETE"
+      );
+      res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+      );
+      res.header("Access-Control-Allow-Credentials", "true");
     try {
         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
         if (!token) {
