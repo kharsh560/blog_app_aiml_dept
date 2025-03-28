@@ -21,5 +21,6 @@ EXPOSE 4800
 # ENV NODE_ENV=production
 
 # Start the server
-CMD ["npm", "run", "dev"] 
-# or if you use "node index.js" or something else, adapt accordingly
+# CMD ["npm", "run", "dev"] 
+CMD ["node", "-r", "dotenv/config", "--experimental-json-modules", "src/index.js"]
+# No need of nodemon in production!!

@@ -1,3 +1,5 @@
+# New dockerCompose; Now serving frontend also from docker:-
+
 version: "3.8"
 
 services:
@@ -7,7 +9,6 @@ services:
       dockerfile: Dockerfile
     container_name: blog-backend
     env_file: ./blog_app_backend/.env
-    # Expose the internal port so Nginx can communicate with it
     expose:
       - "4800"
     restart: unless-stopped
@@ -15,16 +16,54 @@ services:
   nginx:
     image: nginx:alpine
     container_name: blog-nginx
-    # volumes:
-    #   - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-    #   - ./nginx/certs:/etc/nginx/certs:ro
     volumes:
+      # Use your custom nginx configuration
       - /root/MaitAimlBlogAppBackend/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      # Mount SSL certificates
       - /etc/letsencrypt/live/mait-aimldept-blogapp.live/fullchain.pem:/etc/nginx/certs/fullchain.pem:ro
       - /etc/letsencrypt/live/mait-aimldept-blogapp.live/privkey.pem:/etc/nginx/certs/privkey.pem:ro
+      # Mount the built frontend (make sure the build folder is present on the host)
+      - ./blog_app_frontend/build:/usr/share/nginx/html:ro
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - backend
     restart: unless-stopped
+
+
+
+
+
+
+
+# version: "3.8"
+
+# services:
+#   backend:
+#     build:
+#       context: ./blog_app_backend
+#       dockerfile: Dockerfile
+#     container_name: blog-backend
+#     env_file: ./blog_app_backend/.env
+#     # Expose the internal port so Nginx can communicate with it
+#     expose:
+#       - "4800"
+#     restart: unless-stopped
+
+#   nginx:
+#     image: nginx:alpine
+#     container_name: blog-nginx
+#     # volumes:
+#     #   - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+#     #   - ./nginx/certs:/etc/nginx/certs:ro
+#     volumes:
+#       - /root/MaitAimlBlogAppBackend/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+#       - /etc/letsencrypt/live/mait-aimldept-blogapp.live/fullchain.pem:/etc/nginx/certs/fullchain.pem:ro
+#       - /etc/letsencrypt/live/mait-aimldept-blogapp.live/privkey.pem:/etc/nginx/certs/privkey.pem:ro
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     depends_on:
+#       - backend
+#     restart: unless-stopped

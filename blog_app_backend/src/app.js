@@ -14,7 +14,7 @@ const app = express();
 // );
 
 // 2)
-// const whitelist = ["https://mait-aiml-official-blogspace.netlify.app"];
+// const whitelist = ["https://mait-aimldept-blogapp.live"];
 
 // const corsOptions = {
 //   origin: function (origin, callback) {
@@ -34,7 +34,7 @@ const app = express();
 
 // 3)
 // const corsOptions = {
-//   origin: "https://mait-aiml-official-blogspace.netlify.app",
+//   origin: "https://mait-aimldept-blogapp.live",
 //   methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
 //   credentials: true,
 //   allowedHeaders: ["Content-Type", "Authorization"],
@@ -43,7 +43,7 @@ const app = express();
 // 4)
 // app.use(
 //   cors({
-//     origin: "https://mait-aiml-official-blogspace.netlify.app",
+//     origin: "https://mait-aimldept-blogapp.live",
 //   })
 // );
 // NOTE: Removed CORS from express app since nginx is already handling it!
