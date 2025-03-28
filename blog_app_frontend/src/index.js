@@ -27,27 +27,43 @@ const Layout = () => {
   useEffect(() => {
     const checkSession = async () => {
       if (!isLoggedIn) {
-        try {
-          // console.log("Checking for session!");
-          const response = await fetch(
-            `${process.env.REACT_APP_BASE_URL}/api/v1/user/checkSession`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              credentials: "include", // Required for cookies in cross-origin requests
-            }
-          );
-
-          if (response.ok) {
-            const jsonResponse = await response.json();
-            dispatch(login(jsonResponse.user)); // Populate Redux store
+        const response = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/api/v1/user/checkSession`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include", // Required for cookies in cross-origin requests
           }
-        } catch (error) {
-          // console.log("Failed to rehydrate session:", error);
-        }
+        );
+
+        if (response.ok) {
+          const jsonResponse = await response.json();
+          dispatch(login(jsonResponse.user)); // Populate Redux store
+        } else return;
       }
+      // try {
+      //   // console.log("Checking for session!");
+      //   const response = await fetch(
+      //     `${process.env.REACT_APP_BASE_URL}/api/v1/user/checkSession`,
+      //     {
+      //       method: "GET",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //       credentials: "include", // Required for cookies in cross-origin requests
+      //     }
+      //   );
+
+      //   if (response.ok) {
+      //     const jsonResponse = await response.json();
+      //     dispatch(login(jsonResponse.user)); // Populate Redux store
+      //   }
+      //   else return;
+      // } catch (error) {
+      //   // console.log("Failed to rehydrate session:", error);
+      // }
     };
     checkSession();
   }, [isLoggedIn, dispatch]);
