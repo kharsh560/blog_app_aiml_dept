@@ -117,6 +117,10 @@ const EditPost = () => {
 
       // console.log("response: ", response);
 
+      if (!response.ok) {
+        throw new Error("Something went wrong, please try again!")
+      }
+
       const result = await response.json();
 
       // console.log("result: ", result);
@@ -136,7 +140,7 @@ const EditPost = () => {
         navigate(`/all-posts/${postId}`);
       }
     } catch (error) {
-      showNotification("error", "Failed to publish blog!");
+      showNotification("error", `Failed to publish blog! ${error}`);
       setIsPublishing(false);
       // console.log("Failed to create post:", error);
     }
