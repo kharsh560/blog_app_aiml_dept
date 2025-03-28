@@ -33,13 +33,13 @@ const app = express();
 // app.use(cors(corsOptions));
 
 // 3)
-const corsOptions = {
-  origin: "https://mait-aiml-official-blogspace.netlify.app",
-  methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: "https://mait-aiml-official-blogspace.netlify.app",
+//   methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+//   credentials: true,
+//   allowedHeaders: ["Content-Type", "Authorization"],
+// };
+// app.use(cors(corsOptions));
 // 4)
 // app.use(
 //   cors({
@@ -61,7 +61,7 @@ app.use(express.static("public"));
 // To access the user's browser cookies and set them too.
 app.use(cookieParser());
 // 19:18 L9) Uptil the above line.
-app.options("*", cors(corsOptions));
+// app.options("*", cors(corsOptions));
 
 // Routing codes:-
 // import { router as userRoutes } from "./routes/user.routes.js";
