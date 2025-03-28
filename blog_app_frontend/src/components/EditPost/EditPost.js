@@ -47,7 +47,7 @@ const EditPost = () => {
   const publishBlog = async (e) => {
     e.preventDefault();
     // setIsPublishing(true);
-    console.log("Dummy Updating blog");
+    // console.log("Dummy Updating blog");
     // setTimeout(() => {
     //   setIsPublishing(false);
     // }, 2000);
@@ -57,20 +57,20 @@ const EditPost = () => {
 
     if (checked.title) {
       if (title === "" || title === null || title === undefined) {
-        console.log("You selected title, but its empty!");
+        // console.log("You selected title, but its empty!");
         showNotification("error", "You choose title but its empty!");
       } else {
-        console.log("Title appended!", title);
+        // console.log("Title appended!", title);
         formData.append("title", title);
       }
     }
 
     if (checked.content) {
       if (content === "" || content === null || content === undefined) {
-        console.log("You selected content, but its empty!");
+        // console.log("You selected content, but its empty!");
         showNotification("error", "You choose content but its empty!");
       } else {
-        console.log("Content appended!", content);
+        // console.log("Content appended!", content);
         formData.append("content", content);
       }
     }
@@ -81,28 +81,28 @@ const EditPost = () => {
         description === null ||
         description === undefined
       ) {
-        console.log("You selected description, but its empty!");
+        // console.log("You selected description, but its empty!");
         showNotification("error", "You choose description but its empty!");
       } else {
-        console.log("Description appended!", description);
+        // console.log("Description appended!", description);
         formData.append("description", description);
       }
     }
 
     if (checked.image) {
       if (image === "" || image === null || image === undefined) {
-        console.log("You selected image, but its empty!");
+        // console.log("You selected image, but its empty!");
         showNotification("error", "You choose image but its empty!");
       } else {
-        console.log("Image appended!");
+        // console.log("Image appended!");
         formData.append("poster", image);
       }
     }
 
-    console.log("formData entries: \n");
-    for (const [key, value] of formData.entries()) {
-      console.log(`${key}:`, value);
-    }
+    // console.log("formData entries: \n");
+    // for (const [key, value] of formData.entries()) {
+    //   console.log(`${key}:`, value);
+    // }
     setIsPublishing(true);
 
     try {
@@ -115,14 +115,14 @@ const EditPost = () => {
         }
       );
 
-      console.log("response: ", response);
+      // console.log("response: ", response);
 
       const result = await response.json();
 
-      console.log("result: ", result);
+      // console.log("result: ", result);
 
       if (!result) {
-        console.log("Failed to create post.");
+        // console.log("Failed to create post.");
         return;
       }
 
@@ -138,7 +138,7 @@ const EditPost = () => {
     } catch (error) {
       showNotification("error", "Failed to publish blog!");
       setIsPublishing(false);
-      console.log("Failed to create post:", error);
+      // console.log("Failed to create post:", error);
     }
   };
   //   NOTE: TODO: I need to setup multer for image upload in the backend and then send the image as a formdata object.

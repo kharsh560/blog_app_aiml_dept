@@ -58,7 +58,8 @@ const Navbar = () => {
       }
 
       const result = await response.json();
-      console.log("Signout successful", result);
+      // console.log("Signout successful", result);
+      showNotification("success", "Signout successful!");
       dispatch(logout());
       // setIsLoggedIn(isLoggedInFromStore);
       // setUserData(userDataFromStore);
@@ -70,10 +71,10 @@ const Navbar = () => {
   const authButtonHandler = async (buttonContent) => {
     // console.log(buttonContent);
     if (buttonContent === "Sign In") {
-      console.log("User wants to sign in");
+      // console.log("User wants to sign in");
       navigate("/signin");
     } else if (buttonContent === "Sign Out") {
-      console.log("User wants to sign out");
+      // console.log("User wants to sign out");
       await signOut();
       navigate("/");
       // console.log("isLoggedIn: ", isLoggedIn);
@@ -85,11 +86,11 @@ const Navbar = () => {
   };
 
   // If you want to verify the state updates after dispatch(logout()), consider using a useEffect to watch the Redux state:
-  useEffect(() => {
-    console.log("isLoggedIn (updated): ", isLoggedIn);
-    console.log("userData (updated): ", userData);
-    console.log("isAdmin (updated): ", isAdmin);
-  }, [isLoggedIn, userData]);
+  // useEffect(() => {
+  //   console.log("isLoggedIn (updated): ", isLoggedIn);
+  //   console.log("userData (updated): ", userData);
+  //   console.log("isAdmin (updated): ", isAdmin);
+  // }, [isLoggedIn, userData]);
 
   return (
     <nav className="bg-white shadow-xl w-full z-30 p-4 border border-gray-200 rounded-md">

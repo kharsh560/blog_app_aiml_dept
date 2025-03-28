@@ -16,7 +16,7 @@ const CommentEditor = forwardRef(
         return;
       }
       e.preventDefault();
-      console.log(textAreaContent);
+      // console.log(textAreaContent);
       const response = await AddComment({
         postId: sentPostId,
         comment: textAreaContent,
@@ -35,10 +35,9 @@ const CommentEditor = forwardRef(
         );
         const json = await response.json();
         if (json.message === "Comments retrieved successfully.") {
-          console.log("Json of getPostComments: ", json);
+          // console.log("Json of getPostComments: ", json);
           setpostComments(json.comments.reverse()); // Update state with fetched comments
           showNotification("success", "Comment added successfully.");
-          console.log("comments for spaceX post" + postComments);
         } else {
           showNotification("error", "Failed to add comment. Please retry.");
         }

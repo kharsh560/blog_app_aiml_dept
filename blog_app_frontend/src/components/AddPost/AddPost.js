@@ -27,8 +27,8 @@ const AddPost = () => {
   const publishBlog = async (e) => {
     e.preventDefault();
     setIsPublishing(true);
-    console.log(JSON.stringify(content));
-    console.log(content);
+    // console.log(JSON.stringify(content));
+    // console.log(content);
 
     if (
       [content, title, description, image].some(
@@ -65,14 +65,15 @@ const AddPost = () => {
         }
       );
 
-      console.log("response: ", response);
+      // console.log("response: ", response);
 
       const result = await response.json();
 
-      console.log("result: ", result);
+      // console.log("result: ", result);
 
       if (!result) {
-        console.log("Failed to create post.");
+        // console.log("Failed to create post.");
+        showNotification("error", "Failed to create post.");
         return;
       }
 
@@ -88,7 +89,7 @@ const AddPost = () => {
     } catch (error) {
       showNotification("error", "Failed to publish blog!");
       setIsPublishing(false);
-      console.log("Failed to create post:", error);
+      // console.log("Failed to create post:", error);
     }
   };
 
@@ -133,9 +134,3 @@ const AddPost = () => {
 };
 
 export default AddPost;
-
-/*
-showEntireThings={() =>
-              console.log(JSON.stringify(content), title, description, image)
-            }
-*/

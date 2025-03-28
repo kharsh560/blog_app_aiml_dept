@@ -70,14 +70,15 @@ function SignUpPage() {
         return;
       }
 
-      console.log("response: ", response);
+      // console.log("response: ", response);
 
       const jsonResponse = await response.json();
 
-      console.log("jsonResponse: ", jsonResponse);
+      // console.log("jsonResponse: ", jsonResponse);
 
       if (!jsonResponse) {
-        console.log("Failed to convert response to JSON");
+        // console.log("Failed to convert response to JSON");
+        throw new Error("Failed to convert response to JSON");
       }
 
       if (response.ok) {
@@ -95,7 +96,8 @@ function SignUpPage() {
         navigate("/signin");
       }
     } catch (error) {
-      showNotification("error", "Something went wrong! Please try again!");
+      // showNotification("error", "Something went wrong! Please try again!");
+      showNotification("error", error);
       console.error("Error during sign up:", error);
     }
   };

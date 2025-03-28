@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const usePostDetail = (id) => {
-  console.log("satya" + id);
   const [userid, setUserId] = useState(null);
   const userData = useSelector((state) => state.auth.userData);
-  console.log("userData._id in usePostDetail:  ", userData?._id);
+  // console.log("userData._id in usePostDetail:  ", userData?._id);
 
   const [postDetail, setpostDetail] = useState(null);
   async function getPostDetail() {

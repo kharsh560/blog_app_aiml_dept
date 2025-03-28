@@ -20,8 +20,8 @@ const Home = () => {
   const slides = [];
 
   const handleCardClick = (project_id) => {
-    console.log("I got clicked.");
-    console.log(project_id);
+    // console.log("I got clicked.");
+    // console.log(project_id);
     navigate(`/all-posts/${project_id}`);
   };
 

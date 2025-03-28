@@ -10,8 +10,8 @@ const CardsGridsDesign = ({data, pageTitle}) => {
 //   const allPostData = useAllPostData();
 //   console.log("hi"  + allPostData);
     const handleCardClick = (project_id) => {
-      console.log("I got clicked.");
-      console.log(project_id);
+      // console.log("I got clicked.");
+      // console.log(project_id);
       navigate(`/all-posts/${project_id}`);
     };  
   return (

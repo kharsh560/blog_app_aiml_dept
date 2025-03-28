@@ -13,9 +13,6 @@ const useUserPost = () => {
     );
 
     const json = await response.json();
-    console.log(":jmd");
-
-    console.log(json);
 
     setuserPosts(json.data);
   }
