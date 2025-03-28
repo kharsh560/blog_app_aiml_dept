@@ -28,7 +28,7 @@ const Layout = () => {
     const checkSession = async () => {
       if (!isLoggedIn) {
         try {
-          console.log("Checking for session!");
+          // console.log("Checking for session!");
           const response = await fetch(
             `${process.env.REACT_APP_BASE_URL}/api/v1/user/checkSession`,
             {
@@ -45,7 +45,7 @@ const Layout = () => {
             dispatch(login(jsonResponse.user)); // Populate Redux store
           }
         } catch (error) {
-          console.log("Failed to rehydrate session:", error);
+          // console.log("Failed to rehydrate session:", error);
         }
       }
     };
