@@ -35,7 +35,7 @@ const AddPost = () => {
         (field) => field === "" || field === null || field === undefined
       )
     ) {
-      setIsPublishing(false);
+      // setIsPublishing(false);
       showNotification("error", "All fields are required!");
       return;
     }
@@ -82,26 +82,31 @@ const AddPost = () => {
         setTitle("");
         setDescription("");
         setImage(null);
-        setIsPublishing(false);
+        // setIsPublishing(false);
         showNotification("success", "Your blog is published successfully!");
         navigate(`/all-posts/${result.post?._id}`);
       }
     } catch (error) {
       showNotification("error", "Failed to publish blog!");
-      setIsPublishing(false);
+      // setIsPublishing(false);
       // console.log("Failed to create post:", error);
+    } finally {
+      setIsPublishing(false);
     }
   };
 
-  if (isPublishing) {
-    return (
-      <div className="h-[80vh] w-screen flex justify-center items-center">
+  return (
+    <div>
+      <div
+        className={
+          isPublishing
+            ? "h-[80vh] w-screen flex justify-center items-center"
+            : "hidden"
+        }
+      >
         <PublisingLoader />
       </div>
-    );
-  } else {
-    return (
-      <div>
+      <div className={isPublishing ? "hidden" : ""}>
         <div
           className={
             isLoading
@@ -129,8 +134,8 @@ const AddPost = () => {
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default AddPost;
