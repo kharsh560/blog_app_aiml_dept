@@ -43,7 +43,7 @@ Ofcourse it will be stringified, but I can simply do  JSON.parse() on it to retu
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY); // Make sure to set environment variable
 
     // 3. Select the model
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" }); // Or other model name
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" }); // Or other model name
 
     // 4. Construct the chat prompt
     const chat = model.startChat({

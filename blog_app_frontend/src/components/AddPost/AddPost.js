@@ -27,15 +27,15 @@ const AddPost = () => {
   const publishBlog = async (e) => {
     e.preventDefault();
     setIsPublishing(true);
-    console.log(JSON.stringify(content));
-    console.log(content);
+    // console.log(JSON.stringify(content));
+    // console.log(content);
 
     if (
       [content, title, description, image].some(
         (field) => field === "" || field === null || field === undefined
       )
     ) {
-      setIsPublishing(false);
+      // setIsPublishing(false);
       showNotification("error", "All fields are required!");
       return;
     }
@@ -65,15 +65,16 @@ const AddPost = () => {
         }
       );
 
-      console.log("response: ", response);
+      // console.log("response: ", response);
 
       const result = await response.json();
 
       console.log("result: ", result);
 
       if (!result) {
-        console.log("Failed to create post.");
-        return;
+        // console.log("Failed to create post.");
+        throw new Error("Failed to create post.");
+        // return;
       }
 
       if (result.message === "Post created successfully") {
@@ -85,53 +86,100 @@ const AddPost = () => {
         showNotification("success", "Your blog is published successfully!");
         navigate(`/all-posts/${result.post?._id}`);
       }
+      else {
+        showNotification("error", "Something went wrong! Please try again.");
+      }
     } catch (error) {
-        showNotification("error", "Failed to publish blog!");
-        setIsPublishing(false);
-        console.log("Failed to create post:", error);
+      showNotification("error", error);
+      // setIsPublishing(false);
+      console.log("Failed to create post:", error);
+    } finally {
+      setIsPublishing(false);
     }
   }
 
-  if (isPublishing) {
-    return (
-      <div className="h-[80vh] w-screen flex justify-center items-center">
+  return (
+    <div>
+      <div
+        className={
+          isPublishing
+            ? "h-[80vh] w-screen flex justify-center items-center"
+            : "hidden"
+        }
+      >
         <PublisingLoader />
       </div>
-    ); 
-  } 
-  else {
-
-      return (
-        <div>
-          <div
-            className={
-              isLoading
-                ? "h-[80vh] w-screen flex justify-center items-center"
-                : "hidden"
-            }
-          >
-            <Loader />
+      <div className={isPublishing ? "hidden" : ""}>
+        <div
+          className={
+            isLoading
+              ? "h-[80vh] w-screen flex justify-center items-center"
+              : "hidden"
+          }
+        >
+          <Loader />
+        </div>
+        <div
+          className={
+            isLoading ? "hidden" : "flex justify-center w-full h-[80vh]"
+          }
+        >
+          <div className="mx-2">
+            <RTE setContent={setContent} />
           </div>
-          <div
-            className={
-              isLoading ? "hidden" : "flex justify-center w-full h-[80vh]"
-            }
-          >
-            <div className="mx-2">
-              <RTE setContent={setContent} />
-            </div>
-            <div className="mx-2">
-              <DescriptionTitleImageForms
-                setDescription={setDescription}
-                setImage={setImage}
-                setTitle={setTitle}
-                publishBlog={publishBlog}
-              />
-            </div>
+          <div className="mx-2">
+            <DescriptionTitleImageForms
+              setDescription={setDescription}
+              setImage={setImage}
+              setTitle={setTitle}
+              publishBlog={publishBlog}
+            />
           </div>
         </div>
-      );
-  }
+      </div>
+    </div>
+  );
+
+  // if (isPublishing) {
+  //   return (
+  //     <div className="h-[80vh] w-screen flex justify-center items-center">
+  //       <PublisingLoader />
+  //     </div>
+  //   ); 
+  // } 
+  // else {
+
+  //     return (
+        // <div>
+        //   <div
+        //     className={
+        //       isLoading
+        //         ? "h-[80vh] w-screen flex justify-center items-center"
+        //         : "hidden"
+        //     }
+        //   >
+        //     <Loader />
+        //   </div>
+        //   <div
+        //     className={
+        //       isLoading ? "hidden" : "flex justify-center w-full h-[80vh]"
+        //     }
+        //   >
+        //     <div className="mx-2">
+        //       <RTE setContent={setContent} />
+        //     </div>
+        //     <div className="mx-2">
+        //       <DescriptionTitleImageForms
+        //         setDescription={setDescription}
+        //         setImage={setImage}
+        //         setTitle={setTitle}
+        //         publishBlog={publishBlog}
+        //       />
+        //     </div>
+        //   </div>
+        // </div>
+  //     );
+  // }
 };
 
 export default AddPost;
