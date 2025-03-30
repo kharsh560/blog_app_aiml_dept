@@ -93,6 +93,12 @@ function SignUpPage() {
             );
             navigate("/signin");
         }
+        else {
+          showNotification(
+            "error",
+            jsonResponse.message || jsonResponse.error
+          );
+        }
     } catch (error) {
       showNotification("error", "Something went wrong! Please try again!");
       console.error("Error during sign up:", error);
