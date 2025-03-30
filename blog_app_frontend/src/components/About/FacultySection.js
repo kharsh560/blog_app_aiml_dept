@@ -4,22 +4,29 @@ const facultyData = [
   {
     name: "Dr. Neeraj Garg",
     title: "Head of Department (HOD)",
-    image: "https://media.licdn.com/dms/image/v2/D5603AQECnZHMHgX-rQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1729488955073?e=2147483647&v=beta&t=vfd7mJxnlABnD6Wk_nQiV_Z-xUUWxkyM1uPYSpwAsGU", // Replace with HOD's image URL
+    profilePictureLink:
+      "https://media.licdn.com/dms/image/v2/D5603AQECnZHMHgX-rQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1729488955073?e=2147483647&v=beta&t=vfd7mJxnlABnD6Wk_nQiV_Z-xUUWxkyM1uPYSpwAsGU", // Replace with HOD's image URL
   },
   {
     name: "Dr. Tripti Lamba",
     title: "Associate Professor -AI & ML Department  ",
-    image: "https://cse.mait.ac.in/images/Tripti_Lamba.jpg", 
+    profilePictureLink: "https://cse.mait.ac.in/images/Tripti_Lamba.jpg",
+  },
+  {
+    name: "Dr. Neelam Sharma",
+    title: "Assistant Professor- AI &ML Department ",
+    profilePictureLink: "https://cse.mait.ac.in/images/Neelam-Sharma.jpg",
   },
   // {
   //   name: "Dr. Gunjan Chugh",
   //   title: "Assistant Professor- AI &ML Department  ",
-  //   image: "https://cse.mait.ac.in/images/Gunjan_Chugh.jpg", 
+  //   profilePictureLink: "https://cse.mait.ac.in/images/Gunjan_Chugh.jpg",
   // },
   {
-    name: "Dr. Neelam Sharma",
-    title: "Assistant Professor- AI &ML Department ",
-    image: "https://cse.mait.ac.in/images/Neelam-Sharma.jpg", 
+    name: "Dr. Sakshi Pandey",
+    title: "Assistant Professor- AI &ML Department  ",
+    profilePictureLink:
+      "https://res.cloudinary.com/dx5dlghqe/image/upload/v1735927377/genderNeutralAvatar_ywbjph.png",
   },
 ];
 
@@ -30,11 +37,11 @@ const FacultySection = () => {
         <h2 className="text-3xl font-bold text-center mb-12">
           Core Faculties (AI&ML Dept.)
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {facultyData.map((faculty, index) => (
             <div key={index} className="flex flex-col items-center">
               <img
-                src={faculty.image}
+                src={faculty.profilePictureLink}
                 alt={faculty.name}
                 className="w-48 h-48 rounded-full object-cover shadow-lg mb-4"
               />

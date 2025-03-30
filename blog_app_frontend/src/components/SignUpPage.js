@@ -94,6 +94,8 @@ function SignUpPage() {
           "You signed up successfully! Please login now!"
         );
         navigate("/signin");
+      } else {
+        showNotification("error", jsonResponse.message || jsonResponse.error);
       }
     } catch (error) {
       // showNotification("error", "Something went wrong! Please try again!");
