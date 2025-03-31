@@ -33,13 +33,13 @@ const app = express();
 // app.use(cors(corsOptions));
 
 // 3)
-// const corsOptions = {
-//   origin: "https://mait-aimldept-blogapp.live",
-//   methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
-//   credentials: true,
-//   allowedHeaders: ["Content-Type", "Authorization"],
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN,
+  methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 // 4)
 // app.use(
 //   cors({

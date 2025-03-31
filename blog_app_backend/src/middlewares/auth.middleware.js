@@ -2,10 +2,7 @@ import jwt from "jsonwebtoken"
 import { User } from "../models/user.model.js"
 
 const verifyJWTandPopulateUserDataInReq = async (req, res, next) => {
-      res.header(
-        "Access-Control-Allow-Origin",
-        "https://mait-aiml-official-blogspace.netlify.app"
-      );
+      res.header("Access-Control-Allow-Origin", process.env.CORS_ORIGIN);
       res.header(
         "Access-Control-Allow-Methods",
         "GET, POST, OPTIONS, PUT, DELETE"
