@@ -82,7 +82,7 @@ const Home = () => {
               className="w-full h-full object-cover transition-opacity duration-500"
             />
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-90" />
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
           </div>
 
           {/* Content */}
@@ -98,7 +98,7 @@ const Home = () => {
                   <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
                     {slides[currentSlide]?.title}
                   </h1>
-                  <p className="text-2xl text-yellow-300 mb-4">
+                  <p className="text-xl text-blue-100 mb-4">
                     {slides[currentSlide]?.description}
                   </p>
                   <p className="text-lg text-gray-200 mb-8 line-clamp-3 sm:line-clamp-none">
